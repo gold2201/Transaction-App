@@ -12,9 +12,11 @@ dependencies = [
     "alembic>=1.13.0",
     "pydantic>=2.7.0",
     "pydantic-settings>=2.3.0",
+    "pydantic[email]>=2.7.0",
     "python-jose[cryptography]>=3.3.0",
     "passlib[bcrypt]>=1.7.4",
     "httpx>=0.27.0",
+    "python-multipart>=0.0.12"
 ]
 
 [project.optional-dependencies]
@@ -30,7 +32,6 @@ dev = [
 dev = [
     "ruff>=0.5.0",
     "mypy>=1.11.0",
-    "pre-commit>=3.7.0",
     "pytest>=8.2.0",
     "pytest-asyncio>=0.23.0",
 ]
@@ -89,6 +90,14 @@ warn_return_any = true
 warn_unused_ignores = true
 disallow_untyped_defs = true
 plugins = ["pydantic.mypy"]
+
+[[tool.mypy.overrides]]
+module = "jose.*"
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = "bcrypt.*"
+ignore_missing_imports = true
 
 [tool.pytest.ini_options]
 asyncio_mode = "auto"
