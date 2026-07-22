@@ -10,6 +10,9 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.core.security import decode_token
 from app.db.session import get_db
 from app.models.user import User
+from app.services.admin import AdminService
+from app.services.auth import AuthService
+from app.services.user import UserService
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/auth/sign-in")
 
@@ -53,3 +56,15 @@ async def get_current_admin(
             detail="Admin privileges required",
         )
     return current_user
+
+
+def get_user_service(db: AsyncSession = Depends(get_db)) -> UserService:
+    return UserService(db)
+
+
+def get_admin_service(db: AsyncSession = Depends(get_db)) -> AdminService:
+    return AdminService(db)
+
+
+def get_auth_service(db: AsyncSession = Depends(get_db)) -> AuthService:
+    return AuthService(db)
