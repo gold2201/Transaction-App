@@ -1,6 +1,12 @@
 import uuid
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, EmailStr, Field
+
+
+class SignUpRequest(BaseModel):
+    email: EmailStr
+    full_name: str = Field(min_length=1, max_length=255)
+    password: str = Field(min_length=6, max_length=100)
 
 
 class Token(BaseModel):
@@ -17,6 +23,6 @@ class TokenData(BaseModel):
     user_id: uuid.UUID | None = None
 
 
-class LoginRequest(BaseModel):
-    email: str
+class SignInRequest(BaseModel):
+    username: str
     password: str
