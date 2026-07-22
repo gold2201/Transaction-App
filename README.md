@@ -7,7 +7,7 @@ cd Transaction-App
 ### 2. Настройка окружения
 Создайте файл конфигурации `.env`:
 ```bash
-cp .env.example .env
+touch .env
 ```
 
 Заполните `.env` следующими переменными:
