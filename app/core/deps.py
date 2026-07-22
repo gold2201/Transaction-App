@@ -32,7 +32,7 @@ async def get_current_user(
         if user_id is None:
             raise credentials_exception
         token_type = payload.get("type")
-        if token_type == "refresh":  # noqa: S105
+        if token_type == "refresh":
             raise HTTPException(
                 status_code=status.HTTP_401_UNAUTHORIZED,
                 detail="Refresh token not allowed for access",
