@@ -13,6 +13,7 @@ from app.models.user import User
 from app.services.admin import AdminService
 from app.services.auth import AuthService
 from app.services.user import UserService
+from app.services.webhook import WebhookService
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/auth/sign-in")
 
@@ -68,3 +69,7 @@ def get_admin_service(db: AsyncSession = Depends(get_db)) -> AdminService:
 
 def get_auth_service(db: AsyncSession = Depends(get_db)) -> AuthService:
     return AuthService(db)
+
+
+def get_webhook_service(db: AsyncSession = Depends(get_db)) -> WebhookService:
+    return WebhookService(db)

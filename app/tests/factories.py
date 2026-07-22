@@ -1,4 +1,5 @@
 import uuid
+from decimal import Decimal
 
 import bcrypt
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -34,7 +35,7 @@ async def create_user(
 async def create_account(
     db: AsyncSession,
     user_id: uuid.UUID,
-    balance: float = 0.0,
+    balance: Decimal = Decimal("0.00"),
 ) -> Account:
     account = Account(
         id=uuid.uuid4(),

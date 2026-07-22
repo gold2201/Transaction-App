@@ -3,7 +3,7 @@ from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
 
-from app.api.routers import admin_router, auth_router, users_router
+from app.api.routers import admin_router, auth_router, users_router, webhooks_router
 from app.core.config import settings
 
 
@@ -20,3 +20,4 @@ app = FastAPI(
 app.include_router(auth_router)
 app.include_router(users_router)
 app.include_router(admin_router)
+app.include_router(webhooks_router)
