@@ -46,16 +46,13 @@ docker compose up -d db
 
 ### 2. Установка зависимостей и окружения
 ```bash
-# Установка всех зависимостей проекта
 uv sync
 ```
 
 ### 3. Миграции и запуск
 ```bash
-# Применение миграций Alembic
 uv run alembic upgrade head
 
-# Запуск сервера разработки с автоперезагрузкой
 uv run uvicorn app.main:app --reload
 ```
 
